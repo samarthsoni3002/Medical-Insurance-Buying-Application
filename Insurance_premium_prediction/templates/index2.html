@@ -182,12 +182,7 @@
         var popup = document.getElementById(company + "-popup");
         popup.style.display = "none";
       }
-
-      function buyNow(company, price, platformFee) {
-        var price = "{{prediction_text}}"
-        var total = eval(price) + parseInt(platformFee);
-        alert("Premium :- "+ price+100 + " Platform Fee:- " + " "+((0.005*price)) + "Total Price:- " + ((price+100)+((0.005*price))));
-      }
+      
       function updatePremiumPrice() {
         var predictionText = "{{prediction_text}}";
         var premiumElements = document.getElementsByClassName("premium-price");
@@ -197,14 +192,16 @@
             var calculatedPremium = eval(predictionText) + 100;
             premiumElements[i].innerText = "Premium: " + calculatedPremium;
             document.getElementById("price_change1").innerText = "Premium: " + calculatedPremium;
+            document.getElementById("price_change1").innerText = "Premium: " + calculatedPremium + "\n" + "Platform Fee:- " + (0.005 * (calculatedPremium+100));
           } else if (i === 1) {
             var calculatedPremium = eval(predictionText) - 100;
             premiumElements[i].innerText = "Premium: " + calculatedPremium;
-            document.getElementById("price_change2").innerText = "Premium: " + calculatedPremium;
+            document.getElementById("price_change2").innerText = "Premium: " + calculatedPremium + "\n" + "Platform Fee:- " + (0.005 * (calculatedPremium-100));
           } else if (i === 2) {
             var calculatedPremium = eval(predictionText) + 50;
             premiumElements[i].innerText = "Premium: " + calculatedPremium;
             document.getElementById("price_change3").innerText = "Premium: " + calculatedPremium;
+            document.getElementById("price_change3").innerText = "Premium: " + calculatedPremium + "\n" + "Platform Fee:- " + (0.005 * (calculatedPremium+50));
           }
         }
       }
